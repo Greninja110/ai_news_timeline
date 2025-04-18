@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Medical AI Models | AI Timeline</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* Medical theme accents */
+        :root {
+            --medical-primary: #1e88e5;
+            --medical-secondary: #03a9f4;
+            --medical-accent: #00bcd4;
+            --medical-light: #e1f5fe;
+            --medical-dark: #0d47a1;
+        }
+        
+        .medical-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, transparent 0, transparent 2px, rgba(30, 136, 229, 0.03) 3px, transparent 4px) 0 0 / 40px 40px,
+                radial-gradient(circle at 90% 80%, transparent 0, transparent 2px, rgba(0, 188, 212, 0.03) 3px, transparent 4px) 0 0 / 40px 40px,
+                linear-gradient(var(--background-color), var(--background-color));
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .hero.medical {
+            position: relative;
+        }
+        
+        .hero.medical::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(30, 136, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 188, 212, 0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .hero.medical h1 {
+            background: linear-gradient(to right, var(--medical-primary), var(--medical-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero.medical h2 {
+            color: var(--medical-secondary);
+        }
+        
+        .model-section {
+            padding: 50px 0;
+        }
+        
+        .model-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .model-card {
+            background-color: var(--card-bg-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(30, 136, 229, 0.2);
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--medical-primary), var(--medical-accent));
+        }
+        
+        .model-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .model-content {
+            padding: 20px 25px;
+        }
+        
+        .model-footer {
+            padding: 15px 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .model-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .model-developer {
+            font-size: 1rem;
+            color: var(--medical-accent);
+            margin-bottom: 0;
+        }
+        
+        .model-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: rgba(30, 136, 229, 0.2);
+            color: #64b5f6;
+            border: 1px solid rgba(30, 136, 229, 0.4);
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .model-specs {
+            margin-top: 20px;
+        }
+        
+        .model-specs h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--medical-secondary);
+        }
+        
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .specs-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .specs-list li i {
+            color: var(--medical-accent);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        .model-rating {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(30, 136, 229, 0.2);
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .model-rating i {
+            color: var(--medical-accent);
+            margin-right: 8px;
+        }
+        
+        .compare-btn {
+            background: transparent;
+            color: var(--medical-secondary);
+            border: 1px solid var(--medical-secondary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .compare-btn:hover {
+            background-color: var(--medical-secondary);
+            color: white;
+        }
+        
+        .medical-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .medical-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--medical-primary), var(--medical-secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(30, 136, 229, 0.3);
+        }
+        
+        .medical-section-title {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .medical-section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: rgba(22, 28, 45, 0.5);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border: 1px solid rgba(30, 136, 229, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--medical-primary);
+        }
+        
+        .feature-icon {
+            height: 60px;
+            width: 60px;
+            background: linear-gradient(135deg, var(--medical-dark), var(--medical-primary));
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--medical-secondary);
+            margin-bottom: 10px;
+        }
+        
+        .case-studies {
+            background-color: rgba(22, 28, 45, 0.7);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-top: 60px;
+            border-left: 4px solid var(--medical-primary);
+        }
+        
+        .case-studies h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-card {
+            background-color: rgba(22, 28, 45, 0.5);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .case-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--medical-dark), var(--medical-primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .case-content {
+            padding: 25px;
+        }
+        
+        .case-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .case-location {
+            font-size: 0.9rem;
+            color: var(--medical-accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .case-location i {
+            margin-right: 5px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .model-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .medical-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .medical-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .feature-grid, .case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-studies {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Medical Network Background Animation -->
+    <div class="medical-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <span class="ai-icon"><i class="fas fa-robot"></i></span>
+            <h1>AI Timeline</h1>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="../../index.html">Timeline</a></li>
+                <li><a href="../prerequisites.html">AI Concepts</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn active">Best Models <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="medical.html" class="active">Medical</a>
+                        <a href="coding.html">Coding</a>
+                        <a href="image-gen.html">Image Generation</a>
+                        <a href="video-gen.html">Video Generation</a>
+                        <a href="multimodal.html">Multimodal</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero medical">
+        <div class="hero-content">
+            <h1>Top Medical AI Models of 2025</h1>
+            <h2>Transforming Healthcare with Artificial Intelligence</h2>
+            <p>Explore the cutting-edge AI models revolutionizing diagnosis, imaging, and patient care in 2025.</p>
+        </div>
+    </header>
+    
+    <!-- Featured Model Section -->
+    <section class="model-section">
+        <div class="container">
+            <div class="medical-header">
+                <div class="medical-icon">
+                    <i class="fas fa-star-of-life"></i>
+                </div>
+                <div>
+                    <h2 class="medical-section-title">Leading Medical AI Model</h2>
+                    <p class="medical-section-subtitle">The highest-performing AI model specifically optimized for healthcare applications in 2025.</p>
+                </div>
+            </div>
+            
+            <div class="model-container">
+                <div class="model-card featured-model">
+                    <div class="model-header">
+                        <h3 class="model-name">Janus-Pro-7B</h3>
+                        <p class="model-developer">DeepSeek</p>
+                    </div>
+                    <div class="model-content">
+                        <div>
+                            <span class="model-tag">Multimodal</span>
+                            <span class="model-tag">Medical Imaging</span>
+                            <span class="model-tag">7B Parameters</span>
+                        </div>
+                        
+                        <p>Released on January 20, 2025, Janus-Pro-7B represents a breakthrough in medical AI, combining compact size with exceptional performance for healthcare applications. Despite having only 7 billion parameters, it achieves state-of-the-art accuracy in medical imaging tasks.</p>
+                        
+                        <div class="model-specs">
+                            <h4>Key Specifications</h4>
+                            <ul class="specs-list">
+                                <li>
+                                    <i class="fas fa-brain"></i>
+                                    <span>7 billion parameters optimized for medical applications</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-eye"></i>
+                                    <span>Real-time object recognition with 92.3% accuracy</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-image"></i>
+                                    <span>Generates 4K-resolution medical visualizations</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-microchip"></i>
+                                    <span>Efficient deployment on standard hospital hardware</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-lock"></i>
+                                    <span>HIPAA-compliant with robust privacy protections</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <div class="model-rating">
+                            <i class="fas fa-award"></i>
+                            <span>Best Medical Model 2025</span>
+                        </div>
+                        <button class="compare-btn">Compare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Features Section -->
+    <section class="model-section">
+        <div class="container">
+            <div class="medical-header">
+                <div class="medical-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div>
+                    <h2 class="medical-section-title">Key Capabilities</h2>
+                    <p class="medical-section-subtitle">What makes Janus-Pro-7B the leading model for medical applications in 2025.</p>
+                </div>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Diagnostics</h3>
+                    <p>Identifies abnormalities in medical images with accuracy comparable to specialist radiologists.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="feature-title">Real-time Monitoring</h3>
+                    <p>Processes continuous patient data streams to detect early warning signs of deterioration.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="feature-title">Genomic Analysis</h3>
+                    <p>Interprets genetic test results to identify potential disease risks and treatment options.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="feature-title">Treatment Planning</h3>
+                    <p>Generates personalized treatment recommendations based on patient data and medical literature.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Medical Documentation</h3>
+                    <p>Automatically generates and summarizes clinical notes from doctor-patient conversations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Neurological Assessment</h3>
+                    <p>Analyzes brain scans to detect early signs of neurological conditions with high precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies Section -->
+    <section class="model-section">
+        <div class="container">
+            <div class="case-studies">
+                <h3>Real-World Applications</h3>
+                <p>Janus-Pro-7B is already making an impact in healthcare facilities worldwide. Here are some notable implementations:</p>
+                
+                <div class="case-grid">
+                    <div class="case-card">
+                        <div class="case-image">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="case-content">
+                            <h4 class="case-title">Mayo Clinic Radiology Integration</h4>
+                            <p class="case-location"><i class="fas fa-map-marker-alt"></i> Rochester, Minnesota</p>
+                            <p>Implementation as a diagnostic assistant for radiologists, reducing report turnaround time by 62% while maintaining diagnostic accuracy.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="case-card">
+                        <div class="case-image">
+                            <i class="fas fa-hospital-alt"></i>
+                        </div>
+                        <div class="case-content">
+                            <h4 class="case-title">NHS Remote Diagnostic Platform</h4>
+                            <p class="case-location"><i class="fas fa-map-marker-alt"></i> United Kingdom</p>
+                            <p>Deployment in remote rural clinics to provide specialist-level image analysis for communities with limited access to specialists.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="case-card">
+                        <div class="case-image">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <div class="case-content">
+                            <h4 class="case-title">Singapore General Hospital ICU</h4>
+                            <p class="case-location"><i class="fas fa-map-marker-alt"></i> Singapore</p>
+                            <p>Implementation in intensive care units to monitor patient vitals and predict adverse events up to 6 hours before conventional systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Other Notable Models Section -->
+    <section class="model-section">
+        <div class="container">
+            <div class="medical-header">
+                <div class="medical-icon">
+                    <i class="fas fa-list-alt"></i>
+                </div>
+                <div>
+                    <h2 class="medical-section-title">Other Notable Medical AI Models</h2>
+                    <p class="medical-section-subtitle">While Janus-Pro-7B leads the field, these specialized models excel in specific medical niches.</p>
+                </div>
+            </div>
+            
+            <div class="model-container">
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-name">MedicalGPT-5</h3>
+                        <p class="model-developer">DeepMind Health</p>
+                    </div>
+                    <div class="model-content">
+                        <div>
+                            <span class="model-tag">Clinical NLP</span>
+                            <span class="model-tag">Medical Literature</span>
+                        </div>
+                        
+                        <p>Specialized in natural language processing for medical literature and clinical documentation. Excels at evidence-based medicine and clinical decision support.</p>
+                        
+                        <div class="model-specs">
+                            <h4>Key Specifications</h4>
+                            <ul class="specs-list">
+                                <li>
+                                    <i class="fas fa-brain"></i>
+                                    <span>22B parameters trained on medical literature</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-book-medical"></i>
+                                    <span>98.7% accuracy in medical knowledge retrieval</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-language"></i>
+                                    <span>Supports 18 languages for global deployment</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <div class="model-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9/5.0</span>
+                        </div>
+                        <button class="compare-btn">Compare</button>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-name">PathAI Pro</h3>
+                        <p class="model-developer">PathAI</p>
+                    </div>
+                    <div class="model-content">
+                        <div>
+                            <span class="model-tag">Histopathology</span>
+                            <span class="model-tag">Cancer Detection</span>
+                        </div>
+                        
+                        <p>Focuses exclusively on histopathology and tissue analysis. Best-in-class for cancer detection and classification from tissue samples.</p>
+                        
+                        <div class="model-specs">
+                            <h4>Key Specifications</h4>
+                            <ul class="specs-list">
+                                <li>
+                                    <i class="fas fa-microscope"></i>
+                                    <span>99.1% accuracy in identifying major cancer types</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span>Analysis time under 3 minutes per slide</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-database"></i>
+                                    <span>Trained on 15 million annotated pathology slides</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <div class="model-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8/5.0</span>
+                        </div>
+                        <button class="compare-btn">Compare</button>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-name">CardioNet-3</h3>
+                        <p class="model-developer">HeartHealth AI</p>
+                    </div>
+                    <div class="model-content">
+                        <div>
+                            <span class="model-tag">Cardiology</span>
+                            <span class="model-tag">ECG Analysis</span>
+                        </div>
+                        
+                        <p>Specialized in cardiovascular imaging and diagnostics. Exceptional performance in ECG interpretation and cardiac MRI analysis.</p>
+                        
+                        <div class="model-specs">
+                            <h4>Key Specifications</h4>
+                            <ul class="specs-list">
+                                <li>
+                                    <i class="fas fa-heartbeat"></i>
+                                    <span>Detects 128 cardiac abnormalities from ECG data</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>95.7% accuracy in predicting cardiovascular events</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Optimized for mobile devices and wearable integration</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="model-footer">
+                        <div class="model-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7/5.0</span>
+                        </div>
+                        <button class="compare-btn">Compare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="ai-icon"><i class="fas fa-robot"></i></span>
+                    <h2>AI Timeline</h2>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="../../index.html">Timeline</a></li>
+                        <li><a href="../prerequisites.html">AI Concepts</a></li>
+                        <li><a href="medical.html">Medical AI</a></li>
+                        <li><a href="coding.html">Coding AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Timeline. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../js/logger.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
