@@ -17,73 +17,6 @@
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Timeline Section with z-index fix for the line -->
-<style>
-    /* Critical z-index fixes */
-    .timeline::after {
-        content: '';
-        position: absolute;
-        width: 2px;
-        background: linear-gradient(to bottom, #7b68ee, #6a5acd);
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -1px;
-        z-index: 1 !important; /* Force the line to stay behind */
-    }
-    
-    .timeline-date {
-        position: absolute;
-        top: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2 !important; /* Force date bubbles to stay in front */
-    }
-    
-    .timeline-date-bubble {
-        width: 75px;
-        height: 75px;
-        background-color: #7b68ee;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-family: var(--font-primary);
-        box-shadow: 0 0 20px rgba(123, 104, 238, 0.7);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        position: relative;
-        z-index: 2 !important; /* Force date bubbles to stay in front */
-    }
-    
-    /* Enhanced date styling */
-    .timeline-date .month {
-        font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .timeline-date .day {
-        font-size: 1.4rem;
-        font-weight: 700;
-        line-height: 1.1;
-    }
-    
-    .timeline-date .year {
-        font-size: 0.8rem;
-        font-weight: 500;
-        opacity: 0.9;
-    }
-    
-    /* Date in description */
-    .date-prefix {
-        font-weight: bold;
-        color: var(--accent-color);
-        margin-bottom: 8px;
-        display: block;
-    }
-    </style>
 </head>
 
 <body>
@@ -146,24 +79,157 @@
     </section>
 
     <!-- Timeline Section -->
+<!-- Timeline Section -->
 <section class="timeline-section">
     <div class="container">
         <div class="timeline">
-            <!-- January 2025 -->
-            <!-- DeepSeek-R1 -->
-            <div class="timeline-item" data-date="2025-01-20" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">20</div>
-                        <div class="year">2025</div>
+            <!-- January 2025 Header -->
+            <div class="month-header">
+                <div class="month-marker">
+                    <div class="month-bubble">
+                        <span>January</span>
+                        <span class="year">2025</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- January Items Ordered by Date -->
+            <!-- MiniMax-Text-01 (Jan 08) -->
+            <div class="timeline-item" data-date="2025-01-08" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>MiniMax-Text-01</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 8, 2025:</strong> MiniMax releases Text-01, a model with 456 billion parameters and a 4M token context window, ideal for academic and research purposes.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>456 billion parameters</li>
+                                <li>4M token context window</li>
+                                <li>99.1% accuracy in academic citation checks</li>
+                                <li>Real-time misinformation detection</li>
+                                <li>API latency under 300ms</li>
+                                <li>Ideal for academic and research purposes</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kimi k1.5 (Jan 10) -->
+            <div class="timeline-item" data-date="2025-01-10" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Kimi k1.5</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 10, 2025:</strong> Moonshot AI releases Kimi k1.5, a 500 billion parameter model with multilingual support for 48 languages and energy-efficient design.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>500 billion parameters</li>
+                                <li>87.4% MMLU score</li>
+                                <li>Multilingual support for 48 languages</li>
+                                <li>98.7% accuracy in contract clause extraction</li>
+                                <li>Energy consumption 40% below industry average</li>
+                                <li>Leading model for multilingual applications</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doubao-1.5-Pro (Jan 12) -->
+            <div class="timeline-item" data-date="2025-01-12" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Doubao-1.5-Pro</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 12, 2025:</strong> ByteDance releases Doubao-1.5-Pro, a 300 billion parameter model that is 50x cheaper than GPT-4 with TikTok integration.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>300 billion parameters</li>
+                                <li>50x cheaper than GPT-4</li>
+                                <li>Processes 12,000 tokens per second</li>
+                                <li>Customizable industry-specific variants</li>
+                                <li>Seamless TikTok API integration</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GLM-4 (Jan 14) -->
+            <div class="timeline-item" data-date="2025-01-14" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>GLM-4</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 14, 2025:</strong> Zhipu AI releases GLM-4, a 130 billion parameter model matching GPT-4's performance in Chinese-language tasks while using 80% less energy.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>130 billion parameters</li>
+                                <li>Matches GPT-4's performance in Chinese-language tasks</li>
+                                <li>Uses 80% less energy</li>
+                                <li>95% accuracy in Mandarin speech recognition</li>
+                                <li>Can be deployed locally on consumer GPUs</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qwen2.5-Max (Jan 15) -->
+            <div class="timeline-item" data-date="2025-01-15" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Qwen2.5-Max</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 15, 2025:</strong> Alibaba releases Qwen2.5-Max, a 325 billion parameter model with exceptional coding capabilities across 32 programming languages.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>325 billion parameters</li>
+                                <li>20T-token training</li>
+                                <li>Coding mastery with support for 32 programming languages</li>
+                                <li>98% accuracy in legacy code modernization</li>
+                                <li>Integrated with Alibaba Cloud's developer ecosystem</li>
+                                <li>Considered one of the best models for coding applications</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen 3 (Jan 18) -->
+            <div class="timeline-item" data-date="2025-01-18" data-category="image">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Imagen 3</h3>
+                        <div class="card-tag image">Image Generation</div>
+                        <p class="brief"><strong>January 18, 2025:</strong> Google releases Imagen 3, a state-of-the-art image generation model with 8K resolution capabilities and 3D model generation.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Photorealistic image synthesis up to 8K resolution</li>
+                                <li>99.3% human detection rate</li>
+                                <li>Supports 3D model generation from 2D inputs</li>
+                                <li>Ethical watermarking system</li>
+                                <li>Considered the best model for image generation and 3D model making</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DeepSeek-R1 and Janus-Pro-7B Release (Jan 20) -->
+            <div class="timeline-item" data-date="2025-01-20" data-category="llm">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>DeepSeek-R1 Release</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Chinese AI startup DeepSeek releases a 671 billion parameter model with breakthrough efficiency, rivaling OpenAI's o1 at a fraction of the cost.</p>
+                        <p class="brief"><strong>January 20, 2025:</strong> Chinese AI startup DeepSeek releases a 671 billion parameter model with breakthrough efficiency, rivaling OpenAI's o1 at a fraction of the cost.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>671 billion parameters, but activates only 37 billion per forward pass (resource-efficient)</li>
@@ -179,20 +245,12 @@
                 </div>
             </div>
 
-            <!-- Janus-Pro-7B -->
             <div class="timeline-item" data-date="2025-01-20" data-category="multimodal">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">20</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Janus-Pro-7B Release</h3>
                         <div class="card-tag multimodal">Multimodal</div>
-                        <p class="brief">DeepSeek launches Janus-Pro-7B, a compact 7 billion parameter model optimized for multimodal vision-language processing with exceptional medical applications.</p>
+                        <p class="brief"><strong>January 20, 2025:</strong> DeepSeek launches Janus-Pro-7B, a compact 7 billion parameter model optimized for multimodal vision-language processing with exceptional medical applications.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>7 billion parameters</li>
@@ -207,20 +265,34 @@
                 </div>
             </div>
 
-            <!-- OpenAI Operator -->
-            <div class="timeline-item" data-date="2025-01-23" data-category="agent">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">23</div>
-                        <div class="year">2025</div>
+            <!-- MiniMax-VL-01 (Jan 22) -->
+            <div class="timeline-item" data-date="2025-01-22" data-category="multimodal">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>MiniMax-VL-01</h3>
+                        <div class="card-tag multimodal">Multimodal</div>
+                        <p class="brief"><strong>January 22, 2025:</strong> MiniMax releases VL-01, a visual-language integration model with exceptional OCR accuracy in low-light conditions and document format support.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Visual-language integration</li>
+                                <li>94.7% accuracy in VQA benchmarks</li>
+                                <li>99% OCR accuracy in low-light conditions</li>
+                                <li>Automatic chart-to-narrative conversion</li>
+                                <li>Supports 12 document formats</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- OpenAI Operator (Jan 23) -->
+            <div class="timeline-item" data-date="2025-01-23" data-category="agent">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>OpenAI Operator</h3>
                         <div class="card-tag agent">AI Agent</div>
-                        <p class="brief">OpenAI launches Operator, an AI agent capable of performing web-based tasks autonomously using a Computer-Using Agent (CUA) model built on GPT-4o.</p>
+                        <p class="brief"><strong>January 23, 2025:</strong> OpenAI launches Operator, an AI agent capable of performing web-based tasks autonomously using a Computer-Using Agent (CUA) model built on GPT-4o.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>AI agent designed to perform web-based tasks autonomously</li>
@@ -235,20 +307,34 @@
                 </div>
             </div>
 
-            <!-- Google Veo 2 -->
-            <div class="timeline-item" data-date="2025-01-26" data-category="video">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">26</div>
-                        <div class="year">2025</div>
+            <!-- Ace Agent (Jan 24) -->
+            <div class="timeline-item" data-date="2025-01-24" data-category="agent">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Ace Agent</h3>
+                        <div class="card-tag agent">AI Agent</div>
+                        <p class="brief"><strong>January 24, 2025:</strong> General Agents releases Ace Agent, a real-time AI agent that controls user's computer at superhuman speeds, 20x faster than OpenAI's Operator.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Real-time AI agent that controls user's computer</li>
+                                <li>Executes tasks at superhuman speeds (20x faster than OpenAI's Operator)</li>
+                                <li>GPU-accelerated capabilities</li>
+                                <li>Supports multi-turn conversations</li>
+                                <li>Customizable bot behavior</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- Google Veo 2 (Jan 26) -->
+            <div class="timeline-item" data-date="2025-01-26" data-category="video">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Google Veo 2</h3>
                         <div class="card-tag video">Video Generation</div>
-                        <p class="brief">Google DeepMind releases Veo 2, a breakthrough video generation model capable of creating high-quality videos up to 4K resolution from text prompts.</p>
+                        <p class="brief"><strong>January 26, 2025:</strong> Google DeepMind releases Veo 2, a breakthrough video generation model capable of creating high-quality videos up to 4K resolution from text prompts.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Creates high-quality videos up to 4K resolution</li>
@@ -266,276 +352,13 @@
                 </div>
             </div>
 
-            <!-- OpenAI o3-mini -->
-            <div class="timeline-item" data-date="2025-01-31" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">31</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>OpenAI o3-mini</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">OpenAI releases o3-mini, part of their o3 reasoning model series designed for precision and speed in technical domains.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>Part of OpenAI's o3 reasoning model series</li>
-                                <li>Designed for precision and speed in technical domains</li>
-                                <li>Available to all ChatGPT users (including free tier)</li>
-                                <li>Variants: o3-mini-low, o3-mini-medium, o3-mini-high</li>
-                                <li>0.95 mean safety score on the HELM Safety benchmark</li>
-                                <li>Enhances specialized applications like scientific research</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Qwen2.5-Max -->
-            <div class="timeline-item" data-date="2025-01-15" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">15</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Qwen2.5-Max</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Alibaba releases Qwen2.5-Max, a 325 billion parameter model with exceptional coding capabilities across 32 programming languages.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>325 billion parameters</li>
-                                <li>20T-token training</li>
-                                <li>Coding mastery with support for 32 programming languages</li>
-                                <li>98% accuracy in legacy code modernization</li>
-                                <li>Integrated with Alibaba Cloud's developer ecosystem</li>
-                                <li>Considered one of the best models for coding applications</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Doubao-1.5-Pro -->
-            <div class="timeline-item" data-date="2025-01-12" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">12</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Doubao-1.5-Pro</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">ByteDance releases Doubao-1.5-Pro, a 300 billion parameter model that is 50x cheaper than GPT-4 with TikTok integration.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>300 billion parameters</li>
-                                <li>50x cheaper than GPT-4</li>
-                                <li>Processes 12,000 tokens per second</li>
-                                <li>Customizable industry-specific variants</li>
-                                <li>Seamless TikTok API integration</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kimi k1.5 -->
-            <div class="timeline-item" data-date="2025-01-10" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">10</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Kimi k1.5</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Moonshot AI releases Kimi k1.5, a 500 billion parameter model with multilingual support for 48 languages and energy-efficient design.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>500 billion parameters</li>
-                                <li>87.4% MMLU score</li>
-                                <li>Multilingual support for 48 languages</li>
-                                <li>98.7% accuracy in contract clause extraction</li>
-                                <li>Energy consumption 40% below industry average</li>
-                                <li>Leading model for multilingual applications</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MiniMax-Text-01 -->
-            <div class="timeline-item" data-date="2025-01-08" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">08</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>MiniMax-Text-01</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">MiniMax releases Text-01, a model with 456 billion parameters and a 4M token context window, ideal for academic and research purposes.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>456 billion parameters</li>
-                                <li>4M token context window</li>
-                                <li>99.1% accuracy in academic citation checks</li>
-                                <li>Real-time misinformation detection</li>
-                                <li>API latency under 300ms</li>
-                                <li>Ideal for academic and research purposes</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Imagen 3 -->
-            <div class="timeline-item" data-date="2025-01-18" data-category="image">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">18</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Imagen 3</h3>
-                        <div class="card-tag image">Image Generation</div>
-                        <p class="brief">Google releases Imagen 3, a state-of-the-art image generation model with 8K resolution capabilities and 3D model generation.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>Photorealistic image synthesis up to 8K resolution</li>
-                                <li>99.3% human detection rate</li>
-                                <li>Supports 3D model generation from 2D inputs</li>
-                                <li>Ethical watermarking system</li>
-                                <li>Considered the best model for image generation and 3D model making</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GLM-4 -->
-            <div class="timeline-item" data-date="2025-01-14" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">14</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>GLM-4</h3>
-                        <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Zhipu AI releases GLM-4, a 130 billion parameter model matching GPT-4's performance in Chinese-language tasks while using 80% less energy.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>130 billion parameters</li>
-                                <li>Matches GPT-4's performance in Chinese-language tasks</li>
-                                <li>Uses 80% less energy</li>
-                                <li>95% accuracy in Mandarin speech recognition</li>
-                                <li>Can be deployed locally on consumer GPUs</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MiniMax-VL-01 -->
-            <div class="timeline-item" data-date="2025-01-22" data-category="multimodal">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">22</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>MiniMax-VL-01</h3>
-                        <div class="card-tag multimodal">Multimodal</div>
-                        <p class="brief">MiniMax releases VL-01, a visual-language integration model with exceptional OCR accuracy in low-light conditions and document format support.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>Visual-language integration</li>
-                                <li>94.7% accuracy in VQA benchmarks</li>
-                                <li>99% OCR accuracy in low-light conditions</li>
-                                <li>Automatic chart-to-narrative conversion</li>
-                                <li>Supports 12 document formats</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ace Agent -->
-            <div class="timeline-item" data-date="2025-01-24" data-category="agent">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">24</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Ace Agent</h3>
-                        <div class="card-tag agent">AI Agent</div>
-                        <p class="brief">General Agents releases Ace Agent, a real-time AI agent that controls user's computer at superhuman speeds, 20x faster than OpenAI's Operator.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>Real-time AI agent that controls user's computer</li>
-                                <li>Executes tasks at superhuman speeds (20x faster than OpenAI's Operator)</li>
-                                <li>GPU-accelerated capabilities</li>
-                                <li>Supports multi-turn conversations</li>
-                                <li>Customizable bot behavior</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- OpenAI Sora Integration -->
+            <!-- OpenAI Sora Integration (Jan 29) -->
             <div class="timeline-item" data-date="2025-01-29" data-category="video">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">JAN</div>
-                        <div class="day">29</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>OpenAI Sora Integration</h3>
                         <div class="card-tag video">Video Generation</div>
-                        <p class="brief">OpenAI makes Sora fully available, offering video generation up to 1080p with features like customizable storyboarding and community feeds.</p>
+                        <p class="brief"><strong>January 29, 2025:</strong> OpenAI makes Sora fully available, offering video generation up to 1080p with features like customizable storyboarding and community feeds.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Full availability of Sora in 2025</li>
@@ -551,21 +374,69 @@
                 </div>
             </div>
 
-            <!-- February 2025 -->
-            <!-- Perplexity Deep Research -->
-            <div class="timeline-item" data-date="2025-02-14" data-category="agent">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">14</div>
-                        <div class="year">2025</div>
+            <!-- OpenAI o3-mini (Jan 31) -->
+            <div class="timeline-item" data-date="2025-01-31" data-category="llm">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>OpenAI o3-mini</h3>
+                        <div class="card-tag llm">Language Model</div>
+                        <p class="brief"><strong>January 31, 2025:</strong> OpenAI releases o3-mini, part of their o3 reasoning model series designed for precision and speed in technical domains.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Part of OpenAI's o3 reasoning model series</li>
+                                <li>Designed for precision and speed in technical domains</li>
+                                <li>Available to all ChatGPT users (including free tier)</li>
+                                <li>Variants: o3-mini-low, o3-mini-medium, o3-mini-high</li>
+                                <li>0.95 mean safety score on the HELM Safety benchmark</li>
+                                <li>Enhances specialized applications like scientific research</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- February 2025 Header -->
+            <div class="month-header">
+                <div class="month-marker">
+                    <div class="month-bubble">
+                        <span>February</span>
+                        <span class="year">2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- February Items -->
+            <!-- Vibe Coding (Feb 10) -->
+            <div class="timeline-item" data-date="2025-02-10" data-category="trend">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>Vibe Coding</h3>
+                        <div class="card-tag trend">Trend</div>
+                        <p class="brief"><strong>February 10, 2025:</strong> Andrej Karpathy coins "Vibe Coding," an AI-dependent programming technique where users describe problems in natural language and AI generates code.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Coined by Andrej Karpathy</li>
+                                <li>AI-dependent programming technique</li>
+                                <li>Users describe problems in natural language, AI generates code</li>
+                                <li>Shifts programmer's role to guiding and refining</li>
+                                <li>Used with tools like Cursor</li>
+                                <li>Enables amateur programmers to create software</li>
+                                <li>Concerns include code quality and security</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perplexity Deep Research (Feb 14) -->
+            <div class="timeline-item" data-date="2025-02-14" data-category="agent">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Perplexity Deep Research</h3>
                         <div class="card-tag agent">AI Agent</div>
-                        <p class="brief">Perplexity introduces Deep Research, a feature that conducts in-depth research by performing dozens of searches and reading hundreds of sources.</p>
+                        <p class="brief"><strong>February 14, 2025:</strong> Perplexity introduces Deep Research, a feature that conducts in-depth research by performing dozens of searches and reading hundreds of sources.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Performs dozens of searches and reads hundreds of sources</li>
@@ -580,20 +451,34 @@
                 </div>
             </div>
 
-            <!-- xAI Grok 3 -->
-            <div class="timeline-item" data-date="2025-02-17" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">17</div>
-                        <div class="year">2025</div>
+            <!-- MCP (Feb 15) -->
+            <div class="timeline-item" data-date="2025-02-15" data-category="platform">
+                <div class="timeline-content">
+                    <div class="timeline-card">
+                        <h3>MCP (Model Context Protocol)</h3>
+                        <div class="card-tag platform">Platform</div>
+                        <p class="brief"><strong>February 15, 2025:</strong> Anthropic's Model Context Protocol gains traction as an open standard for connecting AI models to external tools and data sources.</p>
+                        <div class="read-more-content">
+                            <ul>
+                                <li>Introduced by Anthropic in November 2024, gains traction in early 2025</li>
+                                <li>Open standard for connecting AI models to external tools and data sources</li>
+                                <li>Facilitates more powerful and context-aware AI applications</li>
+                                <li>Developers building integrations using this protocol</li>
+                                <li>Microsoft highlights MCP's role in enabling Azure OpenAI models</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn">Show More</button>
                     </div>
                 </div>
+            </div>
+
+            <!-- xAI Grok 3 (Feb 17) -->
+            <div class="timeline-item" data-date="2025-02-17" data-category="llm">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>xAI Grok 3</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">xAI releases Grok 3, a large language model trained with "10x" more computing power than Grok 2, featuring "Think" and "Big Brain" modes.</p>
+                        <p class="brief"><strong>February 17, 2025:</strong> xAI releases Grok 3, a large language model trained with "10x" more computing power than Grok 2, featuring "Think" and "Big Brain" modes.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Released by xAI (led by Elon Musk)</li>
@@ -612,29 +497,19 @@
                 </div>
             </div>
 
-            <!-- Vibe Coding -->
-            <div class="timeline-item" data-date="2025-02-10" data-category="trend">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">10</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
+            <!-- Ghibli Art AI Trend (Feb 20) -->
+            <div class="timeline-item" data-date="2025-02-20" data-category="trend">
                 <div class="timeline-content">
                     <div class="timeline-card">
-                        <h3>Vibe Coding</h3>
+                        <h3>Ghibli Art AI Trend</h3>
                         <div class="card-tag trend">Trend</div>
-                        <p class="brief">Andrej Karpathy coins "Vibe Coding," an AI-dependent programming technique where users describe problems in natural language and AI generates code.</p>
+                        <p class="brief"><strong>February 20, 2025:</strong> AI-generated Studio Ghibli-style art becomes popular, driven by tools like getimg.ai, sparking ethical debates with Miyazaki criticizing AI art.</p>
                         <div class="read-more-content">
                             <ul>
-                                <li>Coined by Andrej Karpathy</li>
-                                <li>AI-dependent programming technique</li>
-                                <li>Users describe problems in natural language, AI generates code</li>
-                                <li>Shifts programmer's role to guiding and refining</li>
-                                <li>Used with tools like Cursor</li>
-                                <li>Enables amateur programmers to create software</li>
-                                <li>Concerns include code quality and security</li>
+                                <li>AI-generated Studio Ghibli-style art becomes popular</li>
+                                <li>Driven by tools like getimg.ai</li>
+                                <li>ChatGPT being used to create Ghibli-style images</li>
+                                <li>Ethical debates arise, with Miyazaki criticizing AI art</li>
                             </ul>
                         </div>
                         <button class="read-more-btn">Show More</button>
@@ -642,20 +517,13 @@
                 </div>
             </div>
 
-            <!-- Claude 3.7 Sonnet -->
+            <!-- Claude 3.7 Sonnet (Feb 24) -->
             <div class="timeline-item" data-date="2025-02-24" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">24</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Anthropic Claude 3.7 Sonnet</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Anthropic releases Claude 3.7 Sonnet, a hybrid reasoning model that can toggle between rapid and extended thinking modes.</p>
+                        <p class="brief"><strong>February 24, 2025:</strong> Anthropic releases Claude 3.7 Sonnet, a hybrid reasoning model that can toggle between rapid and extended thinking modes.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Hybrid reasoning model</li>
@@ -671,20 +539,13 @@
                 </div>
             </div>
 
-            <!-- OpenAI GPT-4.5 -->
+            <!-- OpenAI GPT-4.5 (Feb 26) -->
             <div class="timeline-item" data-date="2025-02-26" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">26</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>OpenAI GPT-4.5</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">OpenAI releases GPT-4.5 (codenamed Orion), their largest model at the time, with improved pattern recognition and reduced hallucination rates.</p>
+                        <p class="brief"><strong>February 26, 2025:</strong> OpenAI releases GPT-4.5 (codenamed Orion), their largest model at the time, with improved pattern recognition and reduced hallucination rates.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>OpenAI's largest model at the time (internally called Orion)</li>
@@ -700,76 +561,24 @@
                 </div>
             </div>
 
-            <!-- Ghibli Art AI Trend -->
-            <div class="timeline-item" data-date="2025-02-20" data-category="trend">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">20</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>Ghibli Art AI Trend</h3>
-                        <div class="card-tag trend">Trend</div>
-                        <p class="brief">AI-generated Studio Ghibli-style art becomes popular, driven by tools like getimg.ai, sparking ethical debates with Miyazaki criticizing AI art.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>AI-generated Studio Ghibli-style art becomes popular</li>
-                                <li>Driven by tools like getimg.ai</li>
-                                <li>ChatGPT being used to create Ghibli-style images</li>
-                                <li>Ethical debates arise, with Miyazaki criticizing AI art</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
+            <!-- March 2025 Header -->
+            <div class="month-header">
+                <div class="month-marker">
+                    <div class="month-bubble">
+                        <span>March</span>
+                        <span class="year">2025</span>
                     </div>
                 </div>
             </div>
 
-            <!-- MCP (Model Context Protocol) -->
-            <div class="timeline-item" data-date="2025-02-15" data-category="platform">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">FEB</div>
-                        <div class="day">15</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-card">
-                        <h3>MCP (Model Context Protocol)</h3>
-                        <div class="card-tag platform">Platform</div>
-                        <p class="brief">Anthropic's Model Context Protocol gains traction as an open standard for connecting AI models to external tools and data sources.</p>
-                        <div class="read-more-content">
-                            <ul>
-                                <li>Introduced by Anthropic in November 2024, gains traction in early 2025</li>
-                                <li>Open standard for connecting AI models to external tools and data sources</li>
-                                <li>Facilitates more powerful and context-aware AI applications</li>
-                                <li>Developers building integrations using this protocol</li>
-                                <li>Microsoft highlights MCP's role in enabling Azure OpenAI models</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn">Show More</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- March 2025 -->
-            <!-- Alibaba QwQ-32B -->
+            <!-- March Items -->
+            <!-- Alibaba QwQ-32B and Manus AI (Mar 06) -->
             <div class="timeline-item" data-date="2025-03-06" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">06</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Alibaba QwQ-32B</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Alibaba releases QwQ-32B, an AI reasoning model outperforming OpenAI and DeepSeek, with particular strength in multilingual settings.</p>
+                        <p class="brief"><strong>March 6, 2025:</strong> Alibaba releases QwQ-32B, an AI reasoning model outperforming OpenAI and DeepSeek, with particular strength in multilingual settings.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>AI reasoning model outperforming OpenAI and DeepSeek</li>
@@ -784,20 +593,12 @@
                 </div>
             </div>
 
-            <!-- Manus AI -->
             <div class="timeline-item" data-date="2025-03-06" data-category="agent">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">06</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Manus AI</h3>
                         <div class="card-tag agent">AI Agent</div>
-                        <p class="brief">Chinese startup Monica launches Manus AI, claimed as world's first "general AI agent" capable of autonomous task execution.</p>
+                        <p class="brief"><strong>March 6, 2025:</strong> Chinese startup Monica launches Manus AI, claimed as world's first "general AI agent" capable of autonomous task execution.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Launched by Chinese startup Monica</li>
@@ -813,20 +614,13 @@
                 </div>
             </div>
 
-            <!-- Meta LLaMA 4 -->
+            <!-- Meta LLaMA 4 (Mar 07) -->
             <div class="timeline-item" data-date="2025-03-07" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">07</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Meta LLaMA 4</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Meta releases LLaMA 4, a voice-powered AI model for natural language interactions with real-time translation capabilities.</p>
+                        <p class="brief"><strong>March 7, 2025:</strong> Meta releases LLaMA 4, a voice-powered AI model for natural language interactions with real-time translation capabilities.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Voice-powered AI model for natural language interactions</li>
@@ -841,20 +635,13 @@
                 </div>
             </div>
 
-            <!-- OpenAI's New Tools for AI Agents -->
+            <!-- OpenAI's New Tools for AI Agents (Mar 11) -->
             <div class="timeline-item" data-date="2025-03-11" data-category="platform">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">11</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>OpenAI's New Tools for AI Agents</h3>
                         <div class="card-tag platform">Platform</div>
-                        <p class="brief">OpenAI releases Responses API, replacing the Assistants API by mid-2026, along with tools for building custom AI agents.</p>
+                        <p class="brief"><strong>March 11, 2025:</strong> OpenAI releases Responses API, replacing the Assistants API by mid-2026, along with tools for building custom AI agents.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Responses API released, replacing the Assistants API by mid-2026</li>
@@ -869,20 +656,13 @@
                 </div>
             </div>
 
-            <!-- Mistral Small 3.1 -->
+            <!-- Mistral Small 3.1 (Mar 17) -->
             <div class="timeline-item" data-date="2025-03-17" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">17</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Mistral Small 3.1</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Mistral AI releases Small 3.1, an open-source model with 24 billion parameters that outperforms some proprietary models like GPT-4o Mini.</p>
+                        <p class="brief"><strong>March 17, 2025:</strong> Mistral AI releases Small 3.1, an open-source model with 24 billion parameters that outperforms some proprietary models like GPT-4o Mini.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Open-source model with 24 billion parameters</li>
@@ -897,20 +677,13 @@
                 </div>
             </div>
 
-            <!-- Google Gemini 2.5 Pro Experimental -->
+            <!-- Google Gemini 2.5 Pro Experimental (Mar 24) -->
             <div class="timeline-item" data-date="2025-03-24" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">24</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Google Gemini 2.5 Pro Experimental</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Google releases Gemini 2.5 Pro Experimental, topping LMArena leaderboard and leading in math and science benchmarks.</p>
+                        <p class="brief"><strong>March 24, 2025:</strong> Google releases Gemini 2.5 Pro Experimental, topping LMArena leaderboard and leading in math and science benchmarks.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Google's most intelligent model</li>
@@ -928,20 +701,13 @@
                 </div>
             </div>
 
-            <!-- DeepSeek-VL Upgrade -->
+            <!-- DeepSeek-VL Upgrade (Mar 25) -->
             <div class="timeline-item" data-date="2025-03-25" data-category="multimodal">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">25</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>DeepSeek-VL Upgrade</h3>
                         <div class="card-tag multimodal">Multimodal</div>
-                        <p class="brief">DeepSeek releases an upgrade to their vision-language model, boosting performance across text and image inputs and competing with OpenAI's GPT models.</p>
+                        <p class="brief"><strong>March 25, 2025:</strong> DeepSeek releases an upgrade to their vision-language model, boosting performance across text and image inputs and competing with OpenAI's GPT models.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Multi-modal model boosting performance across text and image inputs</li>
@@ -955,20 +721,13 @@
                 </div>
             </div>
 
-            <!-- Google Gemma 3 -->
+            <!-- Google Gemma 3 (Mar 26) -->
             <div class="timeline-item" data-date="2025-03-26" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">26</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Google Gemma 3</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Google releases Gemma 3, a family of open AI models optimized for developer flexibility and performance across various applications.</p>
+                        <p class="brief"><strong>March 26, 2025:</strong> Google releases Gemma 3, a family of open AI models optimized for developer flexibility and performance across various applications.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Family of open AI models</li>
@@ -982,20 +741,13 @@
                 </div>
             </div>
 
-            <!-- Alibaba Qwen2 -->
+            <!-- Alibaba Qwen2 (Mar 27) -->
             <div class="timeline-item" data-date="2025-03-27" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">27</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Alibaba Qwen2</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">Alibaba releases Qwen2, an open-source AI model for cost-efficient AI agents with multilingual capabilities and low-resource requirements.</p>
+                        <p class="brief"><strong>March 27, 2025:</strong> Alibaba releases Qwen2, an open-source AI model for cost-efficient AI agents with multilingual capabilities and low-resource requirements.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Open-source AI model for cost-efficient AI agents</li>
@@ -1010,20 +762,13 @@
                 </div>
             </div>
 
-            <!-- Runway Gen-4 -->
+            <!-- Runway Gen-4 (Mar 31) -->
             <div class="timeline-item" data-date="2025-03-31" data-category="video">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">MAR</div>
-                        <div class="day">31</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Runway Gen-4</h3>
                         <div class="card-tag video">Video Generation</div>
-                        <p class="brief">Runway releases Gen-4, a video generation model with improved character consistency, realistic physics, and prompt adherence.</p>
+                        <p class="brief"><strong>March 31, 2025:</strong> Runway releases Gen-4, a video generation model with improved character consistency, realistic physics, and prompt adherence.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Video generation model</li>
@@ -1039,21 +784,24 @@
                 </div>
             </div>
 
-            <!-- April 2025 -->
-            <!-- Meta LLaMA 4 Models -->
-            <div class="timeline-item" data-date="2025-04-05" data-category="multimodal">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">APR</div>
-                        <div class="day">05</div>
-                        <div class="year">2025</div>
+            <!-- April 2025 Header -->
+            <div class="month-header">
+                <div class="month-marker">
+                    <div class="month-bubble">
+                        <span>April</span>
+                        <span class="year">2025</span>
                     </div>
                 </div>
+            </div>
+
+            <!-- April Items -->
+            <!-- Meta LLaMA 4 Models (Apr 05) -->
+            <div class="timeline-item" data-date="2025-04-05" data-category="multimodal">
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Meta LLaMA 4 Models</h3>
                         <div class="card-tag multimodal">Multimodal</div>
-                        <p class="brief">Meta releases a family of LLaMA 4 models including Scout, Maverick, and Behemoth, trained on multimodal data with open-source options.</p>
+                        <p class="brief"><strong>April 5, 2025:</strong> Meta releases a family of LLaMA 4 models including Scout, Maverick, and Behemoth, trained on multimodal data with open-source options.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Features models like Llama 4 Scout, Maverick, and Behemoth</li>
@@ -1070,20 +818,13 @@
                 </div>
             </div>
 
-            <!-- Mistral AI Pixtral Large -->
+            <!-- Mistral AI Pixtral Large (Apr 09) -->
             <div class="timeline-item" data-date="2025-04-09" data-category="multimodal">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">APR</div>
-                        <div class="day">09</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Mistral AI Pixtral Large</h3>
                         <div class="card-tag multimodal">Multimodal</div>
-                        <p class="brief">Mistral AI releases Pixtral Large, a 124 billion parameter multimodal AI that excels in document analysis and image comprehension.</p>
+                        <p class="brief"><strong>April 9, 2025:</strong> Mistral AI releases Pixtral Large, a 124 billion parameter multimodal AI that excels in document analysis and image comprehension.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>124 billion parameter multimodal AI</li>
@@ -1099,20 +840,13 @@
                 </div>
             </div>
 
-            <!-- Google Cloud Next Event -->
+            <!-- Google Cloud Next Event (Apr 10) -->
             <div class="timeline-item" data-date="2025-04-10" data-category="event">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">APR</div>
-                        <div class="day">10</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>Google Cloud Next Event</h3>
                         <div class="card-tag event">Event</div>
-                        <p class="brief">Google Cloud Next Event features AI announcements including Gemini 2.5 Flash, Agent Development Kit, and Agent2Agent protocol.</p>
+                        <p class="brief"><strong>April 10, 2025:</strong> Google Cloud Next Event features AI announcements including Gemini 2.5 Flash, Agent Development Kit, and Agent2Agent protocol.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Featured announcements related to AI</li>
@@ -1130,20 +864,13 @@
                 </div>
             </div>
 
-            <!-- OpenAI GPT-4.1 -->
+            <!-- OpenAI GPT-4.1 (Apr 14) -->
             <div class="timeline-item" data-date="2025-04-14" data-category="llm">
-                <div class="timeline-date">
-                    <div class="timeline-date-bubble">
-                        <div class="month">APR</div>
-                        <div class="day">14</div>
-                        <div class="year">2025</div>
-                    </div>
-                </div>
                 <div class="timeline-content">
                     <div class="timeline-card">
                         <h3>OpenAI GPT-4.1</h3>
                         <div class="card-tag llm">Language Model</div>
-                        <p class="brief">OpenAI releases GPT-4.1, the successor to GPT-4o, featuring a context window of up to 1 million tokens and improved coding capabilities.</p>
+                        <p class="brief"><strong>April 14, 2025:</strong> OpenAI releases GPT-4.1, the successor to GPT-4o, featuring a context window of up to 1 million tokens and improved coding capabilities.</p>
                         <div class="read-more-content">
                             <ul>
                                 <li>Successor to GPT-4o</li>

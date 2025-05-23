@@ -18,7 +18,7 @@ class TimelineManager {
         this.typeFilterSelect = document.getElementById('model-type-filter');
         
         // Initialize
-        logger.info('Initializing TimelineManager');
+        console.info('Initializing TimelineManager');
         this.init();
     }
     
@@ -28,7 +28,7 @@ class TimelineManager {
     init() {
         try {
             // Log initialization
-            logger.debug('TimelineManager initialization started');
+            console.debug('TimelineManager initialization started');
             
             // Cache timeline items
             this.loadTimelineItems();
@@ -39,9 +39,9 @@ class TimelineManager {
             // Initialize read more buttons
             this.initReadMoreButtons();
             
-            logger.info('TimelineManager initialized successfully');
+            console.info('TimelineManager initialized successfully');
         } catch (error) {
-            logger.error('Error initializing TimelineManager:', error);
+            console.error('Error initializing TimelineManager:', error);
         }
     }
     
@@ -52,7 +52,7 @@ class TimelineManager {
         try {
             // Get all timeline items from the DOM
             const items = document.querySelectorAll('.timeline-item');
-            logger.debug(`Found ${items.length} timeline items`);
+            console.debug(`Found ${items.length} timeline items`);
             
             // Cache the items
             this.timelineItems = Array.from(items).map(item => {
@@ -75,9 +75,9 @@ class TimelineManager {
             // Initially all items are visible and filtered
             this.filteredItems = [...this.timelineItems];
             
-            logger.debug('Timeline items loaded and cached');
+            console.debug('Timeline items loaded and cached');
         } catch (error) {
-            logger.error('Error loading timeline items:', error);
+            console.error('Error loading timeline items:', error);
         }
     }
     
@@ -99,20 +99,22 @@ class TimelineManager {
                     this.currentFilter = filter;
                     this.applyFilters();
                     
-                    logger.info(`Timeline date filter applied: ${filter}`);
+                    console.info(`Timeline date filter applied: ${filter}`);
                 });
             });
             
             // Type filter select
-            this.typeFilterSelect.addEventListener('change', (e) => {
-                this.currentTypeFilter = e.target.value;
-                this.applyFilters();
-                logger.info(`Timeline type filter applied: ${this.currentTypeFilter}`);
-            });
+            if (this.typeFilterSelect) {
+                this.typeFilterSelect.addEventListener('change', (e) => {
+                    this.currentTypeFilter = e.target.value;
+                    this.applyFilters();
+                    console.info(`Timeline type filter applied: ${this.currentTypeFilter}`);
+                });
+            }
             
-            logger.debug('Event listeners set up successfully');
+            console.debug('Event listeners set up successfully');
         } catch (error) {
-            logger.error('Error setting up event listeners:', error);
+            console.error('Error setting up event listeners:', error);
         }
     }
     
@@ -122,31 +124,36 @@ class TimelineManager {
     initReadMoreButtons() {
         try {
             const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            console.debug(`Found ${readMoreBtns.length} read more buttons`);
             
             readMoreBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const card = e.target.closest('.timeline-card');
+                // Remove any existing event listeners to prevent duplicates
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+                
+                newBtn.addEventListener('click', function(e) {
+                    const card = this.closest('.timeline-card');
                     const content = card.querySelector('.read-more-content');
                     
                     if (content.classList.contains('active')) {
                         // Hide content
                         content.classList.remove('active');
-                        e.target.textContent = 'Show More';
-                        e.target.classList.remove('active');
+                        this.textContent = 'Show More';
+                        this.classList.remove('active');
                     } else {
                         // Show content
                         content.classList.add('active');
-                        e.target.textContent = 'Show Less';
-                        e.target.classList.add('active');
+                        this.textContent = 'Show Less';
+                        this.classList.add('active');
                     }
                     
-                    logger.debug(`Read more toggle clicked for: ${card.querySelector('h3').textContent}`);
+                    console.debug(`Read more toggle clicked for: ${card.querySelector('h3').textContent}`);
                 });
             });
             
-            logger.debug('Read more buttons initialized');
+            console.debug('Read more buttons initialized');
         } catch (error) {
-            logger.error('Error initializing read more buttons:', error);
+            console.error('Error initializing read more buttons:', error);
         }
     }
     
@@ -155,7 +162,7 @@ class TimelineManager {
      */
     applyFilters() {
         try {
-            logger.debug(`Applying filters: date=${this.currentFilter}, type=${this.currentTypeFilter}`);
+            console.debug(`Applying filters: date=${this.currentFilter}, type=${this.currentTypeFilter}`);
             
             // Get current date for relative filters
             const now = new Date();
@@ -204,10 +211,13 @@ class TimelineManager {
                 }
             });
             
+            // Also need to handle month headers visibility
+            this.updateMonthHeadersVisibility();
+            
             // Update filtered items
             this.filteredItems = this.timelineItems.filter(item => item.visible);
             
-            logger.info(`Filter applied: ${this.filteredItems.length} items visible out of ${this.timelineItems.length}`);
+            console.info(`Filter applied: ${this.filteredItems.length} items visible out of ${this.timelineItems.length}`);
             
             // Check if no items are visible
             if (this.filteredItems.length === 0) {
@@ -215,8 +225,59 @@ class TimelineManager {
             } else {
                 this.hideNoResultsMessage();
             }
+            
+            // Reinitialize read more buttons in case they were affected by filtering
+            setTimeout(() => {
+                this.initReadMoreButtons();
+            }, 100);
+            
         } catch (error) {
-            logger.error('Error applying filters:', error);
+            console.error('Error applying filters:', error);
+        }
+    }
+    
+    /**
+     * Update month headers visibility based on visible timeline items
+     */
+    updateMonthHeadersVisibility() {
+        try {
+            const monthHeaders = document.querySelectorAll('.month-header');
+            
+            monthHeaders.forEach(header => {
+                // Get the month from this header
+                const monthName = header.querySelector('.month-bubble span:first-child').textContent;
+                const yearText = header.querySelector('.month-bubble .year').textContent;
+                
+                // Convert month name to month number (0-11)
+                const months = ['january', 'february', 'march', 'april', 'may', 'june', 
+                               'july', 'august', 'september', 'october', 'november', 'december'];
+                const monthIndex = months.indexOf(monthName.toLowerCase());
+                
+                if (monthIndex === -1) {
+                    console.warn(`Unknown month name: ${monthName}`);
+                    return;
+                }
+                
+                // Check if there are any visible items for this month
+                const year = parseInt(yearText);
+                const hasVisibleItems = this.timelineItems.some(item => {
+                    if (!item.visible) return false;
+                    
+                    const itemDate = item.date;
+                    return itemDate.getFullYear() === year && 
+                           itemDate.getMonth() === monthIndex;
+                });
+                
+                // Show/hide header based on whether there are visible items
+                if (hasVisibleItems) {
+                    header.style.display = 'block';
+                } else {
+                    header.style.display = 'none';
+                }
+            });
+            
+        } catch (error) {
+            console.error('Error updating month headers visibility:', error);
         }
     }
     
@@ -237,10 +298,10 @@ class TimelineManager {
                 `;
                 
                 this.timelineEl.appendChild(message);
-                logger.debug('No results message displayed');
+                console.debug('No results message displayed');
             }
         } catch (error) {
-            logger.error('Error showing no results message:', error);
+            console.error('Error showing no results message:', error);
         }
     }
     
@@ -252,32 +313,10 @@ class TimelineManager {
             const message = document.querySelector('.no-results-message');
             if (message) {
                 message.remove();
-                logger.debug('No results message removed');
+                console.debug('No results message removed');
             }
         } catch (error) {
-            logger.error('Error hiding no results message:', error);
-        }
-    }
-    
-    /**
-     * Sort timeline items by date
-     */
-    sortItemsByDate(ascending = true) {
-        try {
-            // Sort the items
-            this.timelineItems.sort((a, b) => {
-                const sortOrder = ascending ? 1 : -1;
-                return (a.date - b.date) * sortOrder;
-            });
-            
-            // Rearrange DOM elements
-            this.timelineItems.forEach(item => {
-                this.timelineEl.appendChild(item.element);
-            });
-            
-            logger.info(`Timeline sorted by date: ${ascending ? 'ascending' : 'descending'}`);
-        } catch (error) {
-            logger.error('Error sorting timeline items:', error);
+            console.error('Error hiding no results message:', error);
         }
     }
 }
@@ -289,5 +328,23 @@ document.addEventListener('DOMContentLoaded', () => {
         console.info('Timeline initialized successfully');
     } catch (error) {
         console.error('Error initializing timeline:', error);
+    }
+});
+
+// Backup initialization to ensure event handlers are bound
+window.addEventListener('load', () => {
+    try {
+        // If timelineManager not initialized yet, do it now
+        if (!window.timelineManager) {
+            window.timelineManager = new TimelineManager();
+            console.info('Timeline initialized on window load');
+        } 
+        // Otherwise, just reinitialize the read more buttons
+        else {
+            window.timelineManager.initReadMoreButtons();
+            console.info('Read more buttons reinitialized on window load');
+        }
+    } catch (error) {
+        console.error('Error initializing timeline on window load:', error);
     }
 });

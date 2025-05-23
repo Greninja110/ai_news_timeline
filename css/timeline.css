@@ -1,11 +1,4 @@
-/* 
-* Timeline-specific Styles for AI Timeline Website
-* Author: Your Name
-* Date: April 17, 2025
-* 
-* Description: Contains styles for the vertical timeline component
-*/
-
+/* Updated Timeline CSS */
 .timeline-section {
   padding: 50px 0;
   position: relative;
@@ -17,7 +10,7 @@
   margin: 0 auto;
 }
 
-/* Timeline central line - positioned behind with lower z-index */
+/* Timeline central line - fixed z-index to stay behind */
 .timeline::after {
   content: '';
   position: absolute;
@@ -29,7 +22,46 @@
   margin-left: -2px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(123, 56, 255, 0.3);
-  z-index: 1; /* Lower z-index to place behind date bubbles */
+  z-index: 1; /* Lower z-index to ensure it stays behind bubbles */
+}
+
+/* Month header styling */
+.month-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin: 60px 0 30px;
+}
+
+.month-marker {
+  display: flex;
+  justify-content: center;
+}
+
+.month-bubble {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(123, 56, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 10; /* Higher z-index to appear above the timeline line */
+}
+
+.month-bubble .year {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 5px;
 }
 
 /* Timeline item container */
@@ -39,6 +71,7 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
+  margin-bottom: 30px;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -53,77 +86,21 @@
   margin: 0;
 }
 
-/* Timeline date */
-.timeline-date {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2; /* Higher z-index to place in front of timeline line */
-  text-align: center;
+/* Alternating left-right layout */
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: auto;
+  margin-right: 30px;
 }
 
-/* Circular date style */
-.timeline-date-bubble {
-  width: 75px;
-  height: 75px;
-  background-color: #7b68ee;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-family: var(--font-primary);
-  box-shadow: 0 0 15px rgba(123, 104, 238, 0.7);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  position: relative;
-}
-
-.timeline-date .month {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: -2px;
-  text-transform: uppercase;
-}
-
-.timeline-date .day {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: -2px;
-}
-
-.timeline-date .year {
-  font-size: 0.8rem;
-  font-weight: 500;
+.timeline-item:nth-child(even) .timeline-content {
+  margin-right: auto;
+  margin-left: 30px;
 }
 
 /* Timeline content */
 .timeline-content {
   position: relative;
   width: 45%;
-}
-
-/* Left side (odd items) */
-.timeline-item:nth-child(odd) .timeline-content {
-  margin-left: auto;
-  animation: slideInRight 0.5s ease-out;
-}
-
-/* Right side (even items) */
-.timeline-item:nth-child(even) .timeline-content {
-  margin-right: auto;
-  animation: slideInLeft 0.5s ease-out;
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInLeft {
-  from { transform: translateX(-50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
 }
 
 /* Timeline card */
@@ -162,6 +139,10 @@
 .timeline-card p.brief {
   font-size: 1rem;
   margin-bottom: 15px;
+}
+
+.timeline-card p.brief strong {
+  color: var(--accent-color);
 }
 
 /* Read more content and button */
@@ -215,40 +196,36 @@
   color: white;
 }
 
-/* Responsive layout - mobile */
+/* Media queries for responsive design */
 @media screen and (max-width: 768px) {
   .timeline::after {
-    left: 30px;
+      left: 30px;
   }
   
   .timeline-item {
-    padding-left: 70px;
-    padding-right: 20px;
+      padding-left: 50px;
+      padding-right: 0;
   }
   
-  .timeline-date {
-    left: 30px;
-    transform: none;
-    text-align: left;
-    top: 5px;
+  .month-header {
+      margin-left: -20px;
+      text-align: left;
+  }
+  
+  .month-bubble {
+      width: 100px;
+      height: 100px;
+      font-size: 1rem;
   }
   
   .timeline-content {
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 100px;
+      width: 100%;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
   }
   
   .timeline-item:nth-child(odd) .timeline-content,
   .timeline-item:nth-child(even) .timeline-content {
-    animation: none;
+      margin-left: 20px !important;
   }
 }
-
-/* Animation for "Show more" content */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
